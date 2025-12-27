@@ -106,14 +106,28 @@ class MovieSessionListSerializer(MovieSessionSerializer):
     while cinema_hall are represented using their name field.
     """
 
-    movie = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field="title"
+    movie_title = serializers.CharField(
+        source="movie.title",
+        read_only=True
     )
-    cinema_hall = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field="name"
+    cinema_hall_name = serializers.CharField(
+        source="cinema_hall.name",
+        read_only=True
     )
+    cinema_hall_capacity = serializers.IntegerField(
+        source="cinema_hall.capacity",
+        read_only=True
+    )
+
+    class Meta:
+        model = MovieSession
+        fields = (
+            "id",
+            "show_time",
+            "movie_title",
+            "cinema_hall_name",
+            "cinema_hall_capacity"
+        )
 
 
 class MovieSessionRetrieveSerializer(MovieSessionSerializer):
