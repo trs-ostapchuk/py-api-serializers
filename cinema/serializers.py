@@ -69,3 +69,15 @@ class MovieListSerializer(MovieSerializer):
         many=True,
         read_only=True
     )
+
+
+class MovieRetrieveSerializer(MovieSerializer):
+    """
+    Serializer for retrieving detailed information of a single movie.
+
+    Extends MovieSerializer to include full nested representations of
+    related genres and actors using their respective serializers.
+    Genres are represented with GenreSerializer, and actors with ActorSerializer.
+    """
+    genres = GenreSerializer(many=True)
+    actors = ActorSerializer(many=True)
