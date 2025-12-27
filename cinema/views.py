@@ -1,3 +1,4 @@
+from django.db.models import QuerySet
 from rest_framework import viewsets
 
 from cinema.models import (
@@ -66,7 +67,7 @@ class MovieViewSet(viewsets.ModelViewSet):
             return MovieRetrieveSerializer
         return MovieSerializer
 
-    def get_queryset(self) -> queryset:
+    def get_queryset(self) -> QuerySet:
         """
         Prefetch related genres and actors for list and retrieve actions to optimize queries
         """
@@ -95,7 +96,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
             return MovieSessionRetrieveSerializer
         return MovieSessionSerializer
 
-    def get_queryset(self) -> queryset:
+    def get_queryset(self) -> QuerySet:
         """
         Select related movie and cinema_hall for list and retrieve actions to optimize queries
         """
