@@ -95,3 +95,35 @@ class MovieSessionSerializer(serializers.ModelSerializer):
             "movie",
             "cinema_hall"
         )
+
+
+class MovieSessionListSerializer(MovieSessionSerializer):
+    """
+    Serializer for retrieving a list of movies sessions.
+
+    Extends MovieSessionSerializer to include read-only representations of
+    related movie and cinema_hall. Movie are represented by their title field,
+    while cinema_hall are represented using their name field.
+    """
+
+    movie = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field="title"
+    )
+    cinema_hall = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field="name"
+    )
+
+
+class MovieSessionRetrieveSerializer(MovieSessionSerializer):
+    """
+    Serializer for retrieving detailed information of a single movie session.
+
+    Extends MovieSerializer to include full nested representations of
+    related movie and cinema_hall using their respective serializers.
+    Movie are represented with MovieSerializer, and cinema_hall with CinemaHallSerializer.
+    """
+
+    movie = MovieRetrieveSerializer(many=False, read_only=True)
+    cinema_hall = CinemaHallSerializer()
