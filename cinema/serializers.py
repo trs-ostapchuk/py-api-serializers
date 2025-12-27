@@ -50,3 +50,22 @@ class MovieSerializer(serializers.ModelSerializer):
             "genres",
             "actors"
         )
+
+
+class MovieListSerializer(MovieSerializer):
+    """
+    Serializer for retrieving a list of movies.
+
+    Extends MovieSerializer to include read-only representations of
+    related genres and actors. Genres are represented by their name field,
+    while actors are represented using their string representation.
+    """
+    genres = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field="name"
+    )
+    actors = serializers.StringRelatedField(
+        many=True,
+        read_only=True
+    )
