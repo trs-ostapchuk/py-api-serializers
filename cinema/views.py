@@ -52,7 +52,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     ViewSet for listing, creating, retrieving,
     updating and deleting movies.
     """
-    queryset = Movie.objects.all()
+    queryset = Movie.objects
     serializer_class = MovieSerializer
 
     def get_serializer_class(self):
@@ -81,7 +81,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
     ViewSet for listing, creating, retrieving,
     updating and deleting movie sessions.
     """
-    queryset = MovieSession.objects.all()
+    queryset = MovieSession.objects
     serializer_class = MovieSessionSerializer
 
     def get_serializer_class(self):
