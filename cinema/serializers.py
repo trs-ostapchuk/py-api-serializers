@@ -81,3 +81,17 @@ class MovieRetrieveSerializer(MovieSerializer):
     """
     genres = GenreSerializer(many=True)
     actors = ActorSerializer(many=True)
+
+
+class MovieSessionSerializer(serializers.ModelSerializer):
+    """
+    Model serializer for the MovieSession entity
+    """
+    class Meta:
+        model = MovieSession
+        fields = (
+            "id",
+            "show_time",
+            "movie",
+            "cinema_hall"
+        )

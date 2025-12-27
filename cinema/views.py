@@ -13,7 +13,7 @@ from cinema.serializers import (
     ActorSerializer,
     MovieSerializer,
     MovieListSerializer,
-    MovieRetrieveSerializer,
+    MovieRetrieveSerializer, MovieSessionSerializer,
 )
 
 
@@ -47,7 +47,7 @@ class ActorViewSet(viewsets.ModelViewSet):
 class MovieViewSet(viewsets.ModelViewSet):
     """
     ViewSet for listing, creating, retrieving,
-    updating and deleting actors.
+    updating and deleting movies.
     """
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
@@ -71,3 +71,12 @@ class MovieViewSet(viewsets.ModelViewSet):
         if self.action in ("list", "retrieve"):
             return queryset.prefetch_related("genres").prefetch_related("actors")
         return queryset
+
+
+class MovieSessionViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for listing, creating, retrieving,
+    updating and deleting movie sessions.
+    """
+    queryset = MovieSession.objects.all()
+    serializer_class = MovieSessionSerializer
