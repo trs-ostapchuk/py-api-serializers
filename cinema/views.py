@@ -55,7 +55,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects
     serializer_class = MovieSerializer
 
-    def get_serializer_class(self):
+    def get_serializer_class(self) -> type:
         """
         Return serializer based on action: list → MovieListSerializer,
         retrieve → MovieRetrieveSerializer
@@ -66,7 +66,7 @@ class MovieViewSet(viewsets.ModelViewSet):
             return MovieRetrieveSerializer
         return MovieSerializer
 
-    def get_queryset(self):
+    def get_queryset(self) -> queryset:
         """
         Prefetch related genres and actors for list and retrieve actions to optimize queries
         """
@@ -84,7 +84,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
     queryset = MovieSession.objects
     serializer_class = MovieSessionSerializer
 
-    def get_serializer_class(self):
+    def get_serializer_class(self) -> type:
         """
         Return serializer based on action: list → MovieSessionListSerializer,
         retrieve → MovieSessionRetrieveSerializer
@@ -95,7 +95,7 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
             return MovieSessionRetrieveSerializer
         return MovieSessionSerializer
 
-    def get_queryset(self):
+    def get_queryset(self) -> queryset:
         """
         Select related movie and cinema_hall for list and retrieve actions to optimize queries
         """
