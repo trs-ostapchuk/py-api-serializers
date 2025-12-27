@@ -34,3 +34,19 @@ class ActorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Actor
         fields = ("id", "first_name", "last_name")
+
+
+class MovieSerializer(serializers.ModelSerializer):
+    """
+    Model serializer for the Movie entity
+    """
+    class Meta:
+        model = Movie
+        fields = (
+            "id",
+            "title",
+            "description",
+            "duration",
+            "genres",
+            "actors"
+        )
