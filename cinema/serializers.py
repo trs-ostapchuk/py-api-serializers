@@ -139,5 +139,5 @@ class MovieSessionRetrieveSerializer(MovieSessionSerializer):
     Movie are represented with MovieSerializer, and cinema_hall with CinemaHallSerializer.
     """
 
-    movie = MovieRetrieveSerializer(many=False, read_only=True)
+    movie = MovieListSerializer(many=False, read_only=True)
     cinema_hall = CinemaHallSerializer()
