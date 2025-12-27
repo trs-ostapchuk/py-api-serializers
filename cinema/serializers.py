@@ -26,3 +26,11 @@ class GenreSerializer(serializers.ModelSerializer):
         model = Genre
         fields = ("id", "name")
 
+
+class ActorSerializer(serializers.ModelSerializer):
+    """
+    Model serializer for the Actor entity
+    """
+    class Meta:
+        model = Actor
+        fields = ("id", "first_name", "last_name")

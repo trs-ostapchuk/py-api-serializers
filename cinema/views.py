@@ -10,6 +10,7 @@ from cinema.models import (
 from cinema.serializers import (
     CinemaHallSerializer,
     GenreSerializer,
+    ActorSerializer,
 )
 
 
@@ -29,3 +30,12 @@ class GenreViewSet(viewsets.ModelViewSet):
     """
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+
+
+class ActorViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for listing, creating, retrieving,
+    updating and deleting actors.
+    """
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
